@@ -100,8 +100,13 @@ void destroyTextures(void)
 
 		while (t)
 		{
+			printf("Freeing texture '%s'\n", t->name);
+			
 			next = t->next;
-			SDL_DestroyTexture(t->texture);
+			if (t->texture != NULL)
+			{
+				SDL_DestroyTexture(t->texture);
+			}
 			free(t);
 			t = next;
 		}
